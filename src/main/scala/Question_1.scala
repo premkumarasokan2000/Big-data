@@ -31,12 +31,10 @@ object hello {
     ).toDF("name", "last_checkin")
 
     employees.show()
-    val updated_df = employees.withColumn("last_checkin", to_date(col("last_checkin"), "yyyy-MM-dd"))
 
+    val updated_df = employees.withColumn("last_checkin", to_date(col("last_checkin"), "yyyy-MM-dd"))
     val current_date =  LocalDate.now()
     val lastCheckin_date = java.sql.Date.valueOf(current_date.minusDays(7))
-
-
     val result_df = updated_df.withColumn("status",when(col("last_checkin") >= lastCheckin_date, "Active").otherwise("Inactive")).withColumn("name", initcap(col("name")))
 
     result_df.show()
