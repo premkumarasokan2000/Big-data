@@ -4,7 +4,7 @@ import org.apache.spark.sql.functions.{col,initcap, when,to_date}
 import java.time.LocalDate
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
 
-object hello {
+object employees {
   def main(args:Array[String]):Unit= {
     val sparkconf = new SparkConf()
     sparkconf.set("spark.app.master", "spark-program")
@@ -40,9 +40,8 @@ object hello {
     result_df.show()
 
 
-
-
-  }}
+  }
+}
 
 
 
